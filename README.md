@@ -116,7 +116,7 @@ NOTE: this optimizer has been updated for NumPy 2.x compatibility. Scalar extrac
         opt_df = pd.DataFrame(opt_params)
 
         # optimizer initialization
-        myOptimizer = genetic_algorithm(LB, UB, TARGETS, TOL, MAXIT,
+        myOptimizer = GeneticAlgorithm(LB, UB, TARGETS, TOL, MAXIT,
                                 func_F, constr_F,
                                 opt_df,
                                 parent=parent,
@@ -124,7 +124,7 @@ NOTE: this optimizer has been updated for NumPy 2.x compatibility. Scalar extrac
                                 decimal_limit=4)
 
     # arguments should take form:
-    # genetic_algorithm([[float, float, ...]], [[float, float, ...]], [[float, ...]], float, int,
+    # GeneticAlgorithm([[float, float, ...]], [[float, float, ...]], [[float, ...]], float, int,
     # func, func,
     # dataFrame,
     # class obj,
@@ -429,6 +429,12 @@ NOTE: the original genetic algorithm maximized fitness (less negative is better)
 `main_test.py` provides a sample use case of the optimizer. The objective function is selected at the top of the file; equation objectives run fixed-length and the image objective runs variable-length, handled automatically by the driver.
 
 ### Realtime Graph
+
+<p align="center">
+        <img src="media/Figure_3.png" height="200">
+</p>
+   <p align="center">Left: Reference image objective function, Right: Current best organism</p>
+
 
 `main_test_graph.py` provides an example with a realtime graph. For the image objective it shows the reference image alongside the current best evolved image, updating as the optimization runs. All rendering lives in the driver (not the optimizer), using the same shape decoder the objective uses.
 
